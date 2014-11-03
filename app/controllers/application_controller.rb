@@ -13,7 +13,15 @@ class ApplicationController < ActionController::Base
     @current_user ||= user_repository.find session[:user_id]
   end
 
+  def current_person
+    @current_person ||= find_or_create_person
+  end
+
   private
+
+  def find_or_create_person
+    Person.where(:user_id => current_user.id).first || redirect_to(new_person_path)
+  end
 
   def require_login
     current_user

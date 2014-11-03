@@ -1,6 +1,5 @@
 GEM
   remote: https://rubygems.org/
-  remote: https://cwuHbMh42iUojm2muvpp@gem.fury.io/jumpstartlab/
   specs:
     actionmailer (4.1.7)
       actionpack (= 4.1.7)
