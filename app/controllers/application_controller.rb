@@ -13,6 +13,7 @@ class ApplicationController < ActionController::Base
     @current_user ||= user_repository.find session[:user_id]
   end
 
+  helper_method :current_person
   def current_person
     @current_person ||= find_or_create_person
   end

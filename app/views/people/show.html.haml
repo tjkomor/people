@@ -7,7 +7,7 @@
       %ul.links
         %li= link_to @person.email_address, "mailto:#{@person.email_address}"
         %li= link_to 'GitHub Profile', @person.github_url
-        - if @person.resume
+        - if @person.resume.url
           %li= link_to 'Resume', @person.resume.url
 
       .section
