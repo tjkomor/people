@@ -1,0 +1,149 @@
+.mod-moreinfo
+  padding: 55px 0 105px 10px
+  font-size: 0
+  text-align: center
+  background: #fff
+  margin-bottom: 40px
+  margin-top: 70px
+
+  +max-width(400px)
+    padding-top: 40px
+
+  form
+    margin: 0 auto
+
+  .input
+    width: 30%
+    height: 47px
+    position: relative
+    display: inline-block
+    margin: 0 12px 12px 0
+    text-align: left
+
+    &.textarea
+      height: 190px
+
+  .inputs
+    font-size: 0
+
+    .input
+      width: 48.9313%
+      display: inline-block
+
+      &:first-child
+        margin-right: 2.1374%
+
+      +max-width(400px)
+        width: 100%
+        display: block
+        margin-left: 0 !important
+
+  label
+    top: 22px
+    left: 10px
+    position: absolute
+    z-index: 2
+    font-size: $font-size
+    text-align: left
+    color: #999
+    +transition(.3s)
+
+  input,
+  textarea
+    width: 100%
+    height: 47px
+    top: 0
+    left: 0
+    position: absolute
+    display: block
+    margin: 0
+    padding: 12px 10px 0
+    font-family: $font-family
+    font-size: $font-size
+    font-weight: $font-weight-light
+    color: #666
+    background: #f2f2f2
+    border: solid 1px #ccc
+    -webkit-appearance: none
+    +border-radius(0)
+    +transition(border .3s)
+
+    +max-width(400px)
+      font-size: 16px
+
+    &:focus
+      outline: none
+      border-color: $blue
+
+    &:focus + label,
+    &.hasvalue + label
+      top: 6px
+      font-size: 10px
+      font-weight: $font-weight-bold
+      text-transform: uppercase
+      color: $blue
+
+  textarea
+    height: 190px
+    padding-top: 19px
+    resize: none
+
+  button,
+  input[type="submit"]
+    cursor: pointer
+
+  h2
+    margin-bottom: 45px
+    font-size: 42px
+    font-weight: $font-weight-light
+
+  .submit
+    width: 155px
+
+  .button
+    width: 100%
+    height: 47px
+    top: 0
+    left: 0
+    position: absolute
+    display: block
+    color: #666
+    background: #f2f2f2
+    border-color: #ccc
+    padding: 15px
+
+    +hocus
+      @extend .button:hover
+
+  .thanks
+    margin: 15px 10px 0 0
+    font-size: 24px
+    font-weight: $font-weight-light
+
+    .hide
+      width: 17px
+      height: 17px
+      display: inline-block
+      margin-left: 15px
+      cursor: pointer
+      background: image-url("i_close.png") no-repeat
+      +hide-text
+
+      +retina
+        background-image: image-url("i_close@2x.png")
+        background-size: 100%
+
+  +max-width(860px)
+    form
+      max-width: 320px
+
+    .submit
+      width: 320px
+
+  +max-width(360px)
+    h2
+      font-size: 32px
+
+    .input,
+    .submit
+      width: 300px

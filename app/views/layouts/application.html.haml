@@ -1,0 +1,49 @@
+!!! 5
+
+%html{lang: 'en'}
+  %head
+    %meta{charset: 'utf-8'}
+    %meta{name: 'viewport', content: 'width=device-width, initial-scale=1'}
+
+    %link{href: '/images/turing.ico', rel: 'icon', type: 'image/ico'}
+    %title Turing School of Software &amp; Design
+
+    %meta{name: 'description', content: "We'll turn you into a professional software developer"}
+
+    %meta{property: 'og:description', content: "We'll turn you into a professional software developer"}
+    %meta{property: 'og:image',       content: 'http://turing.io/images/logo-embed.png'}
+    %meta{property: 'og:site_name',   content: 'Turing School of Software & Design'}
+    %meta{property: 'og:title',       content: 'Turing School of Software & Design'}
+    %meta{property: 'og:type',        content: 'website'}
+    %meta{property: 'og:url',         content: 'http://turing.io'}
+
+    = javascript_include_tag 'modernizr'
+    = stylesheet_link_tag 'application'
+    = javascript_include_tag '//use.typekit.net/xxm2mvw.js'
+    = javascript_include_tag 'analytics'
+    = #partial '/layouts/facebook_tracking'
+    :javascript
+      try{Typekit.load();}catch(e){}
+
+  %body{class: 'page_classes'}
+
+    %header.mod-header
+      .layout-wrap
+        %h1= link_to 'Turing School of Software & Design', '/'
+
+        %nav
+          %ul
+            %li{class: nav_active('difference')}= link_to 'The Difference', '/difference'
+            %li{class: nav_active('team')}=       link_to 'Our Team', '/team'
+            %li{class: nav_active('program')}=    link_to 'Program', '/program'
+            %li{class: nav_active('admissions')}= link_to 'Admissions', '/admissions'
+            %li{class: nav_active('tuition')}=    link_to 'Tuition', '/tuition'
+            %li{class: nav_active('blog')}=       link_to 'Blog', 'http://blog.turing.io/'
+            %li{class: nav_active('contact')}=    link_to 'Contact', '/contact'
+
+    = yield
+
+    = javascript_include_tag 'application'
+
+    %footer.mod-footer
+      %p &copy; Copyright 2014 Turing School of Software &amp; Design, All rights reserved
