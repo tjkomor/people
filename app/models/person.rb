@@ -2,6 +2,7 @@ class Person < ActiveRecord::Base
   has_many :projects
   belongs_to :cohort
   validates_uniqueness_of :slug
+  mount_uploader :resume, ResumeUploader
 
   before_save :generate_slug
 

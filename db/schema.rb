@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141103203931) do
+ActiveRecord::Schema.define(version: 20141103220429) do
 
   create_table "cohorts", force: true do |t|
     t.string   "name"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20141103203931) do
     t.datetime "updated_at"
     t.string   "github_url"
     t.string   "slug"
+    t.string   "resume"
   end
 
   create_table "projects", force: true do |t|
