@@ -13,4 +13,4 @@ gem 'haml'
 #gem "compass", "0.12.5"
 gem 'compass-rails'
 #gem 'sass', '3.2.19'
-gem 'compass-rails'
+gem 'redcarpet'

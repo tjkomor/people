@@ -17,4 +17,13 @@ module ApplicationHelper
     #current_page.path == "#{page}.html" ? 'active' : nil
     false
   end
+
+  def markdown_renderer
+    @markdown ||= Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, tables: true)
+  end
+
+  def markdown(content)
+    markdown_renderer.render(content).html_safe
+  end
+
 end

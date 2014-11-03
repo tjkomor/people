@@ -1,0 +1,46 @@
+.layout-wrap
+  .mod-students
+
+    .main
+      %h2 Students
+
+      = render :partial => 'person', :collection => @people
+
+    %aside
+      %h3 Filter students
+
+      .section
+        %h4 Class
+        - ['1406', '1407'].each_with_index do |c, i|
+          %input{type: 'radio', name: 'class', id: "class_#{i}", 'data-class' => c, value: '1'}
+          %label{for: "class_#{i}"}= c
+
+      .section
+        %h4 What
+        %input#onsite{type: 'checkbox', 'data-what' => 'onsite', value: '1'}
+        %label{for: 'onsite'} On-site
+        %input#remote{type: 'checkbox', 'data-what' => 'remote', value: '1'}
+        %label{for: 'remote'} Remote
+
+      .section
+        %h4 Location or willing to relocate to
+        - ['Akron, OH', 'Atlanta, GA', 'Austin, TX', 'Berlin, DE', 'Boston, MA', 'Boulder, CO', 'Chicago, IL', 'Cleveland ,OH', 'Columbus, OH', 'Dallas, TX', 'Denver, CO'].each_with_index do |l, i|
+          %input{type: 'checkbox', id: "location_#{i}", 'data-location' => l, value: '1'}
+          %label{for: "location_#{i}"}= l
+
+      .section
+        %h4 Stack
+        %input#fullstack{type: 'radio', name: 'stack', 'data-stack' => 'full', value: '1'}
+        %label{for: 'fullstack'} Full-stack
+        %input#frontend{type: 'radio', name: 'stack', 'data-stack' => 'front', value: '1'}
+        %label{for: 'frontend'} Front-end
+        %input#backend{type: 'radio', name: 'stack', 'data-stack' => 'back', value: '1'}
+        %label{for: 'backend'} Back-end
+
+      .section
+        %h4 Language interest
+        - ['Ruby', 'JavaScript', 'Go', 'Objective-C', 'Swift'].each_with_index do |l, i|
+          %input{type: 'checkbox', id: "language_#{i}", 'data-language' => l, value: '1'}
+          %label{for: "language_#{i}"}= l
+
+      %a{href: '#', class: 'reset'} reset filters

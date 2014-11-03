@@ -1,0 +1,8 @@
+%article.preview{data: {class: person.cohort.name, what: 'remote onsite', location: 'Akron, OH Boulder, CO', stack: 'full'}}
+  %h1
+    = link_to person_path(person) do
+      = person.full_name
+      = image_tag person.image_url
+  %p
+    = markdown(person.looking_for)
+    = link_to 'read more', 'student'
