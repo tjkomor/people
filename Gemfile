@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
-
+fury_url = ENV['GEMFURY_URL'] # IDK how much we care whether people know the jsl-identity url, but we'll inject it just in case
+source fury_url if fury_url
 
 gem 'rails', '4.1.7'
 gem 'sqlite3'
@@ -16,3 +17,11 @@ gem 'compass-rails'
 gem 'redcarpet'
 gem 'formtastic'
 gem 'carrierwave'
+
+gem 'jsl-identity', '= 0.0.7', require: 'jsl/identity' # for accessing user identities (comes from Gemfury)
+gem 'deject'                                           # dependency injection
+
+group :development, :test do
+  gem 'rspec-rails', '~> 3.0.0'
+  gem 'pry'
+end
