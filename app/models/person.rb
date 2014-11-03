@@ -25,6 +25,15 @@ class Person < ActiveRecord::Base
      :github_url,
      :looking_for,
      :best_at,
-     :cohort_id]
+     :cohort_id,
+     :photo_slug]
+  end
+
+  def image_url
+    if photo_slug
+      "students/#{photo_slug}"
+    else
+      "students/no_photo.jpg"
+    end
   end
 end

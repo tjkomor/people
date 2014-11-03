@@ -7,6 +7,7 @@
         = f.input :email_address
         = f.input :github_url
         = f.input :cohort, :as => :select, :collection => Cohort.all
+        = f.input :photo_slug, :as => :select, :collection => Photo.all
       = f.inputs :name => "Job Type" do
         = f.input :looking_for
         = f.input :best_at
