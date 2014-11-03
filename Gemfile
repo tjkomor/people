@@ -14,3 +14,8 @@ gem 'haml'
 gem 'compass-rails'
 #gem 'sass', '3.2.19'
 gem 'redcarpet'
+
+group :development, :test do
+  gem 'rspec-rails', '~> 3.0.0'
+  gem 'pry'
+end
