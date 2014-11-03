@@ -23,7 +23,9 @@ module ApplicationHelper
   end
 
   def markdown(content)
-    markdown_renderer.render(content).html_safe
+    if content
+      markdown_renderer.render(content).html_safe
+    end
   end
 
 end

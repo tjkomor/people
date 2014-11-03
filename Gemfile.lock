@@ -45,6 +45,8 @@ GEM
       compass (>= 0.12.2)
     erubis (2.7.0)
     execjs (2.2.2)
+    formtastic (3.0.0)
+      actionpack (>= 3.2.13)
     fssm (0.2.10)
     haml (4.0.5)
       tilt
@@ -118,6 +120,7 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 4.0.0)
   compass-rails
+  formtastic
   haml
   jbuilder (~> 2.0)
   jquery-rails

@@ -1,0 +1,8 @@
+.layout-wrap
+  .mod-text
+
+    %h3 Your Dashboard
+
+    %ul
+      %li= link_to 'View your portfolio', person_path(current_user)
+      %li= link_to 'Edit your portfolio', edit_person_path(current_user)

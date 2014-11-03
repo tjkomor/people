@@ -16,4 +16,13 @@ class Person < ActiveRecord::Base
   def to_param
     slug
   end
+
+  def self.editable_attributes
+    [:first_name,
+     :last_name,
+     :email_address,
+     :github_url,
+     :looking_for,
+     :best_at]
+  end
 end
