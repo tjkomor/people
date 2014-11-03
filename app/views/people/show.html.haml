@@ -2,16 +2,16 @@
   .mod-students
 
     %aside
-      = image_tag 'dummy/adam.jpg'
+      = image_tag @person.image_url
 
       %ul.links
-        %li= link_to 'megan.adam@example.com', 'mailto:megan.adam@example.com'
-        %li= link_to 'GitHub repositories', 'http://github.com/'
+        %li= link_to @person.email_address, "mailto:#{@person.email_address}"
+        %li= link_to 'GitHub Profile', @person.github_url
 
       .section
-        %h4 Class
+        %h4 Cohort
         %ul.tags
-          %li 1407
+          %li= @person.cohort.name
 
       .section
         %h4 What
@@ -19,27 +19,27 @@
           %li On-site
 
       .section
-        %h4 Location or willing to relocate to
+        %h4 Preferred Locations
         %ul.tags
           %li Akron, OH
           %li Berlin, DE
 
       .section
-        %h4 Stack
+        %h4 Tech Focus
         %ul.tags
           %li Full-stack
 
       .section
-        %h4 Language interest
+        %h4 Language Interests
         %ul.tags
           %li Ruby
           %li Go
           %li Swift
 
     .main
-      %h2 Magan Adam
+      %h2= @person.full_name
 
-      %p I seek to join a company that places emphasis on continous learning, pair programming and TDD. A developer centric organisation that places a lot of responsibility and trust in their developers.
+      = markdown(@person.looking_for)
 
       %ul.keywords
         %li

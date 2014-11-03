@@ -5,4 +5,4 @@
       = image_tag person.image_url
   %p
     = markdown(person.looking_for)
-    = link_to 'read more', 'student'
+    = link_to 'read more', person_path(person)
