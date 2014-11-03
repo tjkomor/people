@@ -3,7 +3,7 @@ fury_url = ENV['GEMFURY_URL'] # IDK how much we care whether people know the jsl
 source fury_url if fury_url
 
 gem 'rails', '4.1.7'
-gem 'sqlite3'
+gem 'pg'
 gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
@@ -24,4 +24,8 @@ gem 'deject'                                           # dependency injection
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0'
   gem 'pry'
+end
+
+group :production do
+  gem 'rails_12factor'
 end
