@@ -24,6 +24,7 @@ class Person < ActiveRecord::Base
      :email_address,
      :github_url,
      :looking_for,
-     :best_at]
+     :best_at,
+     :cohort_id]
   end
 end
