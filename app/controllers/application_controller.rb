@@ -5,9 +5,6 @@ class ApplicationController < ActionController::Base
 
   Deject self, :user_repository
 
-  before_action :require_login
-  before_action :require_invitation_or_admin
-
   helper_method :current_user
   def current_user
     @current_user ||= user_repository.find session[:user_id]

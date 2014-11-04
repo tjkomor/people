@@ -7,6 +7,9 @@ class PeopleController < ApplicationController
     @person = Person.find_by_slug(params[:id])
   end
 
+  before_action :require_login, :only => [:edit, :update, :create, :new]
+  before_action :require_invitation_or_admin, :only => [:edit, :update, :create, :new]
+
   def edit
     @person = current_person
   end
