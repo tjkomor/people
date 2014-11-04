@@ -11,9 +11,9 @@
 
       .section
         %h4 Class
-        - ['1406', '1407'].each_with_index do |c, i|
-          %input{type: 'radio', name: 'class', id: "class_#{i}", 'data-class' => c, value: '1'}
-          %label{for: "class_#{i}"}= c
+        - Cohort.all.each do |c|
+          %input{type: 'radio', name: 'class', id: "class_#{c.name}", 'data-class' => c.name, value: c.name}
+          %label{for: "class_#{c.name}"}= c.name
 
       .section
         %h4 What
