@@ -3,9 +3,9 @@ class ResumesController < ApplicationController
   end
 
   def create
-    user = current_user
-    user.resume = params[:resume][:file]
-    user.save!
+    person = current_person
+    person.resume = params[:resume][:file]
+    person.save!
     redirect_to dashboard_path
   end
 end

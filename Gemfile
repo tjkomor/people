@@ -18,6 +18,7 @@ gem 'compass-rails'
 gem 'redcarpet'
 gem 'formtastic'
 gem 'carrierwave'
+gem 'fog'
 gem 'jsl-identity', '= 0.0.7', require: 'jsl/identity' # for accessing user identities (comes from Gemfury)
 gem 'deject'                                           # dependency injection
 
