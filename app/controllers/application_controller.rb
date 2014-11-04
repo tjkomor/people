@@ -5,6 +5,10 @@ class ApplicationController < ActionController::Base
 
   Deject self, :user_repository
 
+  def logged_in?
+    !!session[:user_id]
+  end
+
   helper_method :current_user
   def current_user
     @current_user ||= user_repository.find session[:user_id]

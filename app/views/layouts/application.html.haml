@@ -33,7 +33,7 @@
 
         %nav
           %ul
-            - if current_user
+            - if logged_in?
               %li{class: nav_active('dashboard')}= link_to 'Dashboard', dashboard_path
             %li{class: nav_active('portfolios')}= link_to 'All Portfolios', '/'
             %li{class: nav_active('main')}= link_to 'Main Site', 'http://turing.io'
