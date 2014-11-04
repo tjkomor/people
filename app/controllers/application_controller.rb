@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
 
   Deject self, :user_repository
 
+  helper_method :logged_in?
   def logged_in?
     !!session[:user_id]
   end
