@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  resources :people
+  resources :people, :locations
+  resources :location_interests do
+    collection do
+      post :build_location_and, :to => "location_interests#build_location_and_interest"
+    end
+  end
   resource  :dashboard
   resource  :resume
   root      'people#index'

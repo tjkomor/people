@@ -1,0 +1,2 @@
+module LocationPreferencesHelper
+end

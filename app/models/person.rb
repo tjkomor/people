@@ -1,5 +1,7 @@
 class Person < ActiveRecord::Base
   has_many :projects
+  has_many :location_interests
+  has_many :locations, :through => :location_interests
   belongs_to :cohort
   validates_uniqueness_of :slug
   mount_uploader :resume, ResumeUploader

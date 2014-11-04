@@ -1,0 +1,12 @@
+.layout-wrap
+  .mod-text
+
+    %h3 Add an Interest in an Existing Location
+    = semantic_form_for @location_interest do |f|
+      = f.input :location_id, :as => :select, :collection => @additional_locations
+      = f.submit 'Save Interest'
+
+    %h3 Add an Interest in a New Location
+    = semantic_form_for :location_interest, :url => build_location_and_location_interests_path, :method => :post do |f|
+      = f.input :location_name, :hint => "Like 'City, ST'"
+      = f.submit 'Create Location & Save Interest'
