@@ -23,7 +23,7 @@
       .section
         %h4 Preferred Locations
         %ul.tags
-          - @person.location_names.each do |name|
+          - @person.locations.names.each do |name|
             %li= name
 
       .section

@@ -39,7 +39,7 @@ class Person < ActiveRecord::Base
     end
   end
 
-  def location_names
-    locations.order(:name).pluck(:name)
-  end
+  # def location_names
+  #   locations.order(:name).pluck(:name)
+  # end
 end
