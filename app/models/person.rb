@@ -38,4 +38,8 @@ class Person < ActiveRecord::Base
       "students/no_photo.jpg"
     end
   end
+
+  def location_names
+    locations.order(:name).pluck(:name)
+  end
 end
