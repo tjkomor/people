@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :people, :locations
+  resources :people, :locations, :projects
   resources :location_interests do
     collection do
       post :build_location_and, :to => "location_interests#build_location_and_interest"

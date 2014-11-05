@@ -1,0 +1,14 @@
+= semantic_form_for(@project, :html => { :multipart => true }) do |f|
+  = f.inputs :name => "Basics" do
+    = f.input :title
+    = f.input :description, :hint => "About one paragraph, with Markdown available, describing the project."
+    = f.input :my_focus, :hint => "A very short paragraph about what you contributed or focused on during the project. Markdown available. You could link to specific files in the project repo.", :input_html => {:class => 'brief'}
+  = f.inputs :name => "URLs" do
+    = f.input :github_url, :hint => "The project web url like https://github.com/turingschool/people"
+    = f.input :production_url, :hint => "The URL of a live version of the application"
+  = f.inputs :name => "Badges" do
+    = f.input :travis_ci_badge_url, :hint => "If you use TravisCI, get the 'Status Image' URL and add it here."
+    = f.input :code_climate_badge_url, :hint => "If you use CodeClimate, get the 'Badge' URL and add it here."
+  = f.inputs :name => "Media" do
+    = f.input :screenshot, :as => :file, :hint => "You can upload a JPG or animated GIF."
+  = f.submit 'Save'

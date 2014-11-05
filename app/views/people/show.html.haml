@@ -1,5 +1,5 @@
 .layout-wrap
-  .mod-students
+  .mod-students.mod-student
 
     %aside
       = image_tag @person.image_url
@@ -55,3 +55,23 @@
           %ul
             - @person.locations.names.each do |name|
               %li= name
+
+      %ul.projects
+        - @person.projects.each do |project|
+          %li
+            %h3= project.title
+            .screenshot= image_tag(project.screenshot)
+            = markdown(project.description)
+            .urls
+              %h4 URLs
+              %ul.urls
+                %li= link_to_if !project.github_url.empty?, 'GitHub Project Page', project.github_url
+                %li= link_to_if !project.production_url.empty?, 'Live Production Application', project.production_url
+                - unless project.travis_ci_badge_url.empty?
+                  %li TravisCI Status: #{image_tag(project.travis_ci_badge_url)}
+                - unless project.code_climate_badge_url.empty?
+                  %li CodeClimate Status: #{image_tag(project.code_climate_badge_url)}
+            .my_focus
+              %h4 My Areas of Focus
+              = markdown(project.my_focus)
+            .finisher

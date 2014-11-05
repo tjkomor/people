@@ -1,0 +1,13 @@
+.layout-wrap
+  .mod-text
+
+    %h3 Your Portfolio Projects
+
+    %ul
+      - @projects.each do |p|
+        %li
+          = p.title
+          = link_to "(edit)", edit_project_path(p)
+          = link_to "(x)", project_path(p), :method => :delete
+
+    = link_to "Add another project", new_project_path
