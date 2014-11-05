@@ -41,23 +41,17 @@
     .main
       %h2= @person.full_name
 
-      = markdown(@person.looking_for)
+      = markdown(@person.introduction)
 
       %ul.keywords
         %li
           %h3 Best at
-          %ul
-            %li Test Driven Development
-            %li Clean Code
-            %li Problem Solving
+          = markdown(@person.best_at)
         %li
           %h3 Looking for
-          %ul
-            %li Continuous Learning
-            %li Consultancy
-            %li Great Culture
+          = markdown(@person.looking_for)
         %li
           %h3 Preferred locations
           %ul
-            %li West Midlands, UK
-            %li London, UK
+            - @person.locations.names.each do |name|
+              %li= name

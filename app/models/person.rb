@@ -33,7 +33,8 @@ class Person < ActiveRecord::Base
      :best_at,
      :cohort_id,
      :photo_slug,
-     :hidden]
+     :hidden,
+     :introduction]
   end
 
   def image_url
@@ -43,8 +44,4 @@ class Person < ActiveRecord::Base
       "students/no_photo.jpg"
     end
   end
-
-  # def location_names
-  #   locations.order(:name).pluck(:name)
-  # end
 end
