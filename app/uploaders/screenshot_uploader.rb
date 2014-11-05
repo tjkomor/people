@@ -7,7 +7,7 @@ class ScreenshotUploader < CarrierWave::Uploader::Base
   end
 
   def extension_white_list
-    %w(jpg gif)
+    %w(jpg gif png)
   end
 
 end
