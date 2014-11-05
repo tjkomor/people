@@ -23,10 +23,10 @@
         %label{for: 'remote'} Remote
 
       .section
-        %h4 Location or willing to relocate to
-        - ['Akron, OH', 'Atlanta, GA', 'Austin, TX', 'Berlin, DE', 'Boston, MA', 'Boulder, CO', 'Chicago, IL', 'Cleveland ,OH', 'Columbus, OH', 'Dallas, TX', 'Denver, CO'].each_with_index do |l, i|
-          %input{type: 'checkbox', id: "location_#{i}", 'data-location' => l, value: '1'}
-          %label{for: "location_#{i}"}= l
+        %h4 Preferred Location
+        - Location.active.each do |location|
+          %input{type: 'checkbox', id: "location_#{location.id}", 'data-location' => location.name, value: '1'}
+          %label{for: "location_#{location.id}"}= location.name
 
       .section
         %h4 Stack

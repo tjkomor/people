@@ -7,4 +7,8 @@ class Location < ActiveRecord::Base
   def self.names
     order(:name).pluck(:name)
   end
+
+  def self.active
+    all
+  end
 end
