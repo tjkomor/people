@@ -8,6 +8,10 @@ class Person < ActiveRecord::Base
 
   before_save :generate_slug
 
+  def self.active
+    where(:hidden => false)
+  end
+
   def full_name
     [first_name, last_name].join(" ")
   end
@@ -28,7 +32,8 @@ class Person < ActiveRecord::Base
      :looking_for,
      :best_at,
      :cohort_id,
-     :photo_slug]
+     :photo_slug,
+     :hidden]
   end
 
   def image_url
