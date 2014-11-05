@@ -7,7 +7,7 @@ CarrierWave.configure do | config |
       :aws_secret_access_key  => Rails.application.secrets.aws_secret_access_key,
     }
 
-    config.fog_directory = "people-#{Rails.env}"
+    config.fog_directory = "turing-people-#{Rails.env}"
     config.storage       = :fog
   else
     config.storage = :file
