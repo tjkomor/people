@@ -9,6 +9,6 @@ class Location < ActiveRecord::Base
   end
 
   def self.active
-    all
+    order(:name)
   end
 end
