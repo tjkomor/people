@@ -10,6 +10,6 @@ class Location < ActiveRecord::Base
   end
 
   def self.active
-    order("split_part(name, ', ', 2)")
+    order("split_part(name, ', ', 2)").where('locations.location_interests_count > 0')
   end
 end
