@@ -10,4 +10,10 @@ class ScreenshotUploader < CarrierWave::Uploader::Base
     %w(jpg gif png)
   end
 
+  include CarrierWave::MiniMagick
+  
+  version :portfolio do
+    process :resize_to_fit => [240, 240]
+  end
+
 end

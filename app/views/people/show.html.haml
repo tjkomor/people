@@ -60,7 +60,7 @@
         - @person.projects.each do |project|
           %li
             %h3= project.title
-            .screenshot= image_tag(project.screenshot)
+            .screenshot= image_tag(project.screenshot.portfolio.url)
             = markdown(project.description)
             .urls
               %h4 URLs
