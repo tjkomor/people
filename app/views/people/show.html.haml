@@ -62,6 +62,9 @@
             %h3= project.title
             .screenshot= image_tag(project.screenshot.portfolio.url)
             = markdown(project.description)
+            .my_focus
+              %h4 My Areas of Focus
+              = markdown(project.my_focus)
             .urls
               %h4 URLs
               %ul.urls
@@ -70,10 +73,8 @@
                 - unless project.production_url.empty?
                   %li= link_to 'Live Production Application', project.production_url
                 - unless project.travis_ci_badge_url.empty?
-                  %li TravisCI Status: #{image_tag(project.travis_ci_badge_url)}
+                  %li= image_tag(project.travis_ci_badge_url)
                 - unless project.code_climate_badge_url.empty?
-                  %li CodeClimate Status: #{image_tag(project.code_climate_badge_url)}
-            .my_focus
-              %h4 My Areas of Focus
-              = markdown(project.my_focus)
+                  %li= image_tag(project.code_climate_badge_url)
             .finisher
+              &nbsp;
