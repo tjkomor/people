@@ -9,6 +9,6 @@ class Location < ActiveRecord::Base
   end
 
   def self.active
-    order(:name)
+    order("split_part(name, ', ', 1)")
   end
 end
