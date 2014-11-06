@@ -28,19 +28,19 @@
           %input{type: 'checkbox', id: "location_#{location.id}", 'data-location' => location.name, value: '1'}
           %label{for: "location_#{location.id}"}= location.name
 
-      .section
-        %h4 Stack
-        %input#fullstack{type: 'radio', name: 'stack', 'data-stack' => 'full', value: '1'}
-        %label{for: 'fullstack'} Full-stack
-        %input#frontend{type: 'radio', name: 'stack', 'data-stack' => 'front', value: '1'}
-        %label{for: 'frontend'} Front-end
-        %input#backend{type: 'radio', name: 'stack', 'data-stack' => 'back', value: '1'}
-        %label{for: 'backend'} Back-end
-
-      .section
-        %h4 Language interest
-        - ['Ruby', 'JavaScript', 'Go', 'Objective-C', 'Swift'].each_with_index do |l, i|
-          %input{type: 'checkbox', id: "language_#{i}", 'data-language' => l, value: '1'}
-          %label{for: "language_#{i}"}= l
+      -# .section
+      -#   %h4 Stack
+      -#   %input#fullstack{type: 'radio', name: 'stack', 'data-stack' => 'full', value: '1'}
+      -#   %label{for: 'fullstack'} Full-stack
+      -#   %input#frontend{type: 'radio', name: 'stack', 'data-stack' => 'front', value: '1'}
+      -#   %label{for: 'frontend'} Front-end
+      -#   %input#backend{type: 'radio', name: 'stack', 'data-stack' => 'back', value: '1'}
+      -#   %label{for: 'backend'} Back-end
+      -#
+      -# .section
+      -#   %h4 Language interest
+      -#   - ['Ruby', 'JavaScript', 'Go', 'Objective-C', 'Swift'].each_with_index do |l, i|
+      -#     %input{type: 'checkbox', id: "language_#{i}", 'data-language' => l, value: '1'}
+      -#     %label{for: "language_#{i}"}= l
 
       %a{href: '#', class: 'reset'} reset filters
