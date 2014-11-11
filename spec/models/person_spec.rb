@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Location, type: :model do
+RSpec.describe Person, type: :model do
   context "when given correct data" do
     let(:data) do
       {
