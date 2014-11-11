@@ -96,5 +96,15 @@ RSpec.describe Location, type: :model do
 
       expect(result.locations).not_to be_nil
     end
+
+    it "has active persons" do
+      result = Person.create(data)
+
+      expect(Person.active).to include result
+    
+      result = Person.create(hidden: true)
+
+      expect(Person.active).not_to include result
+    end
   end
 end
