@@ -24,8 +24,12 @@ gem 'jsl-identity', '= 0.0.7', require: 'jsl/identity' # for accessing user iden
 gem 'deject'                                           # dependency injection
 
 group :development, :test do
-  gem 'rspec-rails', '~> 3.0.0'
   gem 'pry'
+end
+
+group :test do
+  gem 'rspec-rails', '~> 3.0.0'
+  gem 'simplecov'
 end
 
 group :production do
