@@ -1,23 +1,25 @@
 class Person < ActiveRecord::Base
+  validates_uniqueness_of :slug
+  
   has_many :projects
   has_many :location_interests
-  has_many :locations, :through => :location_interests
+  has_many :locations, through: :location_interests
   belongs_to :cohort
-  validates_uniqueness_of :slug
+  
   mount_uploader :resume, ResumeUploader
 
   before_save :generate_slug
 
   def self.active
-    where(:hidden => false)
+    where(hidden: false)
   end
 
   def full_name
-    [first_name, last_name].join(" ")
+    "#{first_name} #{last_name}"
   end
 
   def generate_slug
-    self.slug = full_name.downcase.gsub(" ", "_")
+    self.slug = I18n.transliterate(full_name).downcase.gsub(" ", "_")
   end
 
   def to_param
@@ -25,16 +27,18 @@ class Person < ActiveRecord::Base
   end
 
   def self.editable_attributes
-    [:first_name,
-     :last_name,
-     :email_address,
-     :github_url,
-     :looking_for,
-     :best_at,
-     :cohort_id,
-     :photo_slug,
-     :hidden,
-     :introduction]
+    [
+      :first_name,
+      :last_name,
+      :email_address,
+      :github_url,
+      :looking_for,
+      :best_at,
+      :cohort_id,
+      :photo_slug,
+      :hidden,
+      :introduction
+    ]
   end
 
   def image_url
