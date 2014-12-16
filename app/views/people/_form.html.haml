@@ -6,6 +6,9 @@
     = f.input :github_url, :hint => "Full URL including http://github.com/"
     = f.input :cohort, :as => :select, :collection => Cohort.all
     = f.input :photo_slug, :as => :select, :collection => Photo.all
+  = f.inputs :name => "Availability" do
+    = f.input :hired, :label => "I have a Job!"
+    = f.input :hired_by, :as => :string, :hint => "Company and location like 'Bonobos in NYC'"
   = f.inputs :name => "Job Type" do
     = f.input :introduction, :hint => "One to two paragraphs about you. Similar to the opening on your resume. Uses Markdown."
     = f.input :looking_for, :input_html => { :class => :brief }, :hint => "3-5 bullets about what will make a company stand out to you. Use Markdown unordered lists like \"* TDD\"."

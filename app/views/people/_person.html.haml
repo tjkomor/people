@@ -1,4 +1,4 @@
-%article.preview{data: {class: person.cohort.name, what: 'remote onsite', location: person.locations.names.join(" "), stack: 'full'}}
+%article.preview{data: {class: person.cohort.name, status: person.status, what: 'remote onsite', location: person.locations.names.join(" "), stack: 'full'}}
   %h1
     = link_to person_path(person) do
       = person.full_name

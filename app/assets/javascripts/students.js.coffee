@@ -35,6 +35,14 @@ $(document).ready ->
         classof = $(this).data('class')
         selected_students = selected_students.filter("[data-class='#{classof}']")
 
+    # Filter matches for 'status'
+    checked = tags.filter('[data-status]:checked')
+    if checked.length > 0
+      checked.each ->
+        status = $(this).data('status')
+        selected_students = selected_students.filter("[data-status*='#{status}']")
+
+
     # Filter matches for 'what'
     checked = tags.filter('[data-what]:checked')
     if checked.length > 0

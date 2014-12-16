@@ -1,11 +1,11 @@
 class Person < ActiveRecord::Base
   validates_uniqueness_of :slug
-  
+
   has_many :projects
   has_many :location_interests
   has_many :locations, through: :location_interests
   belongs_to :cohort
-  
+
   mount_uploader :resume, ResumeUploader
 
   before_save :generate_slug
@@ -37,7 +37,9 @@ class Person < ActiveRecord::Base
       :cohort_id,
       :photo_slug,
       :hidden,
-      :introduction
+      :introduction,
+      :hired,
+      :hired_by
     ]
   end
 
@@ -46,6 +48,14 @@ class Person < ActiveRecord::Base
       "students/#{photo_slug}"
     else
       "students/no_photo.jpg"
+    end
+  end
+
+  def status
+    if hired
+      'hired'
+    else
+      'available'
     end
   end
 end
