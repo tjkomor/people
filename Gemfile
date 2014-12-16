@@ -22,10 +22,15 @@ gem 'fog'
 gem 'mini_magick'
 gem 'jsl-identity', '= 0.0.7', require: 'jsl/identity' # for accessing user identities (comes from Gemfury)
 gem 'deject'                                           # dependency injection
+gem 'honeybadger'
 
 group :development, :test do
-  gem 'rspec-rails', '~> 3.0.0'
   gem 'pry'
+end
+
+group :test do
+  gem 'rspec-rails', '~> 3.0.0'
+  gem 'simplecov'
 end
 
 group :production do

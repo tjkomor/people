@@ -1,0 +1,7 @@
+production:
+  ASQUARED_API_NAME:   'people'
+  ASQUARED_API_SECRET: '8238472047190'
+
+development:
+  ASQUARED_API_NAME:   'people'
+  ASQUARED_API_SECRET: 'some secret'
