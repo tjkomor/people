@@ -3,6 +3,9 @@
     = link_to person_path(person) do
       = person.full_name
       = image_tag person.image_url
-  %p
+
+  - if person.hired?
+    %p= "#{person.first_name} has joined the team at #{person.hired_by}."
+  - else
     = markdown(person.introduction)
-    = link_to 'read more', person_path(person)
+  %p= link_to 'read more', person_path(person)

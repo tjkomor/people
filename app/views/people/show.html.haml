@@ -41,6 +41,10 @@
     .main
       %h2= @person.full_name
 
+      - if @person.hired?
+        %h4= "#{@person.first_name} has joined the team at #{@person.hired_by}."
+
+
       = markdown(@person.introduction)
 
       %ul.keywords
