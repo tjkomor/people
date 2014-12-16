@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
-fury_url = ENV['GEMFURY_URL'] # IDK how much we care whether people know the jsl-identity url, but we'll inject it just in case
-source fury_url if fury_url
+# fury_url = ENV['GEMFURY_URL'] # IDK how much we care whether people know the jsl-identity url, but we'll inject it just in case
+# source fury_url if fury_url
 
 ruby '2.1.3'
 
