@@ -11,7 +11,7 @@ class Person < ActiveRecord::Base
   before_save :generate_slug
 
   def self.active
-    where(hidden: false)
+    where(hidden: false).where(hired: false)
   end
 
   def full_name
