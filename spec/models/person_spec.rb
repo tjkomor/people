@@ -18,7 +18,6 @@ RSpec.describe Person, type: :model do
 
     it "is valid" do
       result = Person.create(data)
-  
       expect(result).to be_valid
       expect(result.first_name).to    eq "Jorge"
       expect(result.last_name).to     eq "Téllez"
@@ -45,14 +44,13 @@ RSpec.describe Person, type: :model do
 
     it "knows its slug" do
       result = Person.create(data).to_param
-    
       expect(result).to eq "jorge_tellez"
     end
 
     it "has editable attributes" do
       attributes = %i(
-        first_name 
-        last_name 
+        first_name
+        last_name
         email_address
         github_url
         looking_for
@@ -61,6 +59,8 @@ RSpec.describe Person, type: :model do
         photo_slug
         hidden
         introduction
+        hired
+        hired_by
         )
 
       result = Person.editable_attributes
@@ -72,7 +72,6 @@ RSpec.describe Person, type: :model do
       result = Person.create
 
       expect(result.image_url).to eq "students/no_photo.jpg"
-      
       result.photo_slug = "photo"
       result.save
 

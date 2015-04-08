@@ -3,6 +3,8 @@ require 'jsl/identity/test'
 
 RSpec.describe ApplicationController, type: :controller do
   controller ApplicationController do
+    before_filter :require_login
+    before_filter :require_invitation_or_admin
     def index
       render text: current_user.name
     end
