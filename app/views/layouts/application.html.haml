@@ -40,6 +40,12 @@
             %li{class: nav_active('main')}= link_to 'Main Site', 'http://turing.io'
             %li{class: nav_active('contact')}=    link_to 'Contact', '/contact'
 
+    - if current_user
+      %p= "hi, #{current_user.github_name}"
+      %p= link_to "logout", logout_path
+    - else
+      %p= link_to "login", login_path
+
     = yield
 
     = javascript_include_tag 'application'
