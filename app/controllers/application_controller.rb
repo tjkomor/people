@@ -1,18 +1,12 @@
 class ApplicationController < ActionController::Base
+  include TuringAuth::CurrentUser
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  Deject self, :user_repository
-
   helper_method :logged_in?
   def logged_in?
-    !!session[:user_id]
-  end
-
-  helper_method :current_user
-  def current_user
-    @current_user ||= user_repository.find session[:user_id]
+    !!current_user
   end
 
   helper_method :current_person
@@ -23,20 +17,10 @@ class ApplicationController < ActionController::Base
   private
 
   def find_or_create_person
-    Person.where(:user_id => current_user.id).first || redirect_to(new_person_path)
+    Person.where(:user_github_id => current_user.github_id).first || redirect_to(new_person_path)
   end
 
   def require_login
-    current_user
-  rescue Jsl::Identity::ResourceNotFound
-    requested_url = Rack::Request.new(request.env).url
-    redirect_to user_repository.login_url(requested_url)
-  end
-
-  def require_invitation_or_admin
-    unless current_user && (current_user.invited? || current_user.admin?)
-      render text:   'An invitation is required to visit this site',
-             status: :forbidden
-    end
+    redirect_to login_path unless current_user
   end
 end

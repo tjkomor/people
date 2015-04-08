@@ -8,7 +8,6 @@ class PeopleController < ApplicationController
   end
 
   before_action :require_login, :only => [:edit, :update, :create, :new]
-  before_action :require_invitation_or_admin, :only => [:edit, :update, :create, :new]
 
   def edit
     @person = current_person
@@ -24,7 +23,7 @@ class PeopleController < ApplicationController
   end
 
   def create
-    @person = Person.find_or_create_by(:user_id => current_user.id)
+    @person = Person.find_or_create_by(:user_github_id => current_user.github_id)
     Person.editable_attributes.each do |attr|
       @person.send("#{attr}=", params[:person][attr])
     end

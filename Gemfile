@@ -4,6 +4,7 @@ source fury_url if fury_url
 
 ruby '2.1.3'
 
+gem 'turing_auth', path: "../turing_auth"
 gem 'thin'
 gem 'rails', '4.1.7'
 gem 'pg'
