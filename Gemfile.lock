@@ -1,10 +1,11 @@
-PATH
-  remote: ../turing_auth
+GIT
+  remote: git://github.com/turingschool/turing_auth.git
+  revision: 74b47a50101221a67141054e2cc315f502a2b13d
   specs:
     turing_auth (0.0.1)
-      octokit
-      omniauth
-      omniauth-github
+      octokit (~> 3.0)
+      omniauth (~> 1.0)
+      omniauth-github (~> 1.0)
 
 GEM
   remote: https://rubygems.org/
@@ -135,7 +136,7 @@ GEM
       subexec (~> 0.2.1)
     mini_portile (0.6.0)
     minitest (5.4.2)
-    multi_json (1.10.1)
+    multi_json (1.11.0)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
     net-scp (1.2.1)
