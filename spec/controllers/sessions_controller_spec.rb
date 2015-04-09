@@ -45,6 +45,16 @@ RSpec.describe SessionsController, :type => :controller do
       assert_redirected_to root_path
       assert_nil @controller.current_user
     end
+
+    it "doesn't allow user missing needed data" do
+      auth_data = {uid: 1234,
+                   credentials: {token: "my-token"},
+                   info: {}}#not valid without info
+      request.env["omniauth.auth"] = Hashie::Mash.new(auth_data)
+      get :create, provider: :github
+      assert_redirected_to root_path
+      assert_nil @controller.current_user
+    end
   end
 
   describe "GET #destroy" do
