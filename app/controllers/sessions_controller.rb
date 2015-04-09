@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
   def new
     if current_user
-      redirect_to subdomains_path
+      redirect_to dashboard_path
     else
       redirect_to '/auth/github'
     end
