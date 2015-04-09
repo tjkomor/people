@@ -61,7 +61,7 @@ namespace :user_gh_ids do
                          "http://www.github.com/#{name}", "https://www.github.com/#{name}"]
       person = Person.where(github_url: gh_account_urls).first
       puts "backfilling gh id for gh username #{name}, person #{person.first_name} #{person.last_name};setting github_id: #{gh_id}"
-      person.github_id = gh_id
+      person.user_github_id = gh_id
       person.save!
     end
   end

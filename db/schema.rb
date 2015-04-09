@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150408200901) do
+ActiveRecord::Schema.define(version: 20150409195632) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,11 +52,11 @@ ActiveRecord::Schema.define(version: 20150408200901) do
     t.string   "resume"
     t.integer  "user_id"
     t.string   "photo_slug"
-    t.boolean  "hidden",        default: false
+    t.boolean  "hidden",         default: false
     t.text     "introduction"
-    t.boolean  "hired",         default: false
+    t.boolean  "hired",          default: false
     t.text     "hired_by"
-    t.integer  "github_id"
+    t.integer  "user_github_id"
   end
 
   create_table "projects", force: true do |t|
