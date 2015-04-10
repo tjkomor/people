@@ -39,6 +39,8 @@
             %li{class: nav_active('portfolios')}= link_to 'All Portfolios', '/'
             %li{class: nav_active('main')}= link_to 'Main Site', 'http://turing.io'
             %li{class: nav_active('contact')}=    link_to 'Contact', '/contact'
+            - if logged_in?
+              %li= link_to 'Logout', logout_path
 
     = yield
 
