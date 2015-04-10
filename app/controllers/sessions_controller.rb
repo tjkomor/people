@@ -24,14 +24,13 @@ class SessionsController < ApplicationController
       redirect_to dashboard_path
     else
       flash[:error] = "Sorry, only members of the Turing github organization can do that."
-      redirect_to root_path
+      redirect_to login_failure_path
     end
   end
 
   def failure
     Rails.logger.error("Oauth failed...#{params[:message]}")
-    flash[:notice] = params[:message]
-    redirect_to root_path
+    @failure_message = params[:message]
   end
 
   def destroy
