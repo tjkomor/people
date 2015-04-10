@@ -53,7 +53,7 @@ GH_NAMES_TO_IDS = {"121watts"=>7582765,
                    "Lydias303"=>8863407,
                    "KristaANelson"=>8313881}
 
-namespace :user_gh_ids do
+namespace :github do
   desc "Backfill all the current people records with appropriate user_github_id"
   task :backfill => :environment do
     GH_NAMES_TO_IDS.each do |name, gh_id|
