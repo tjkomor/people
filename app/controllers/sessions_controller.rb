@@ -12,7 +12,13 @@ class SessionsController < ApplicationController
     user_info = {github_id: auth.uid, github_token: auth.credentials.token,
                  github_name: auth.info.nickname, email: auth.info.email}
     user = TuringAuth::User.new(user_info)
+    if Rails.env.production?
+      Rails.logger.info("Github Auth Callback received with user info #{user_info}")
+      Rails.logger.info("TuringAuth::User validity: #{user.valid?}")
+      Rails.logger.info("TuringAuth::User member?: #{user.turing_member?}")
+    end
     if user.valid? && user.turing_member?
+      Rails.logger.info("login succeeded! setting current user")
       @current_user = user
       session[:current_user] = @current_user.as_json
       redirect_to root_path
