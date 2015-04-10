@@ -25,7 +25,7 @@ RSpec.describe SessionsController, :type => :controller do
       request.env["omniauth.auth"] = Hashie::Mash.new(auth_data)
       expect_any_instance_of(TuringAuth::Teams).to receive(:authorized_member_ids).and_return([auth_data[:uid]])
       get :create, provider: :github
-      assert_redirected_to root_path
+      assert_redirected_to dashboard_path
       assert @controller.current_user.is_a?(TuringAuth::User)
     end
 
