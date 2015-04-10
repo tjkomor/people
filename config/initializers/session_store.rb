@@ -2,4 +2,5 @@
 
 Rails.application.config.session_store :cookie_store,
   key:    '_turing_session',
-  domain: :all
+  domain: "turing-people-staging.herokuapp.com"
+#domain: 'my_app.com
