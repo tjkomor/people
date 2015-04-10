@@ -1,8 +1,8 @@
 GIT
   remote: git://github.com/turingschool/turing_auth.git
-  revision: 74b47a50101221a67141054e2cc315f502a2b13d
+  revision: f17f405451fbc280991ba1ce773dff4e34bbee5e
   specs:
-    turing_auth (0.0.1)
+    turing_auth (0.0.2)
       octokit (~> 3.0)
       omniauth (~> 1.0)
       omniauth-github (~> 1.0)
