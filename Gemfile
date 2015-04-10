@@ -1,6 +1,4 @@
 source 'https://rubygems.org'
-fury_url = ENV['GEMFURY_URL'] # IDK how much we care whether people know the jsl-identity url, but we'll inject it just in case
-source fury_url if fury_url
 
 ruby '2.1.3'
 
@@ -21,7 +19,6 @@ gem 'formtastic'
 gem 'carrierwave'
 gem 'fog'
 gem 'mini_magick'
-gem 'jsl-identity', '= 0.0.7', require: 'jsl/identity' # for accessing user identities (comes from Gemfury)
 gem 'deject'                                           # dependency injection
 gem 'honeybadger'
 
