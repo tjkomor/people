@@ -9,10 +9,9 @@ Rails.application.routes.draw do
   resource  :resume
   root      'people#index'
 
-
   #experimental GH session login
   get "/auth/:provider/callback" => "sessions#create"
-  get "/auth/failure" => "sessions#failure"
+  get "/auth/failure" => "sessions#failure", as: :login_failure
   get '/login' => 'sessions#new', :as => :login
   get '/logout' => 'sessions#destroy', :as => :logout
 end

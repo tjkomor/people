@@ -39,7 +39,7 @@ RSpec.describe SessionsController, :type => :controller do
 
       get :create, provider: :github
 
-      assert_redirected_to root_path
+      assert_redirected_to login_failure_path
       assert_nil @controller.current_user
     end
 
@@ -49,7 +49,7 @@ RSpec.describe SessionsController, :type => :controller do
                    info: {}}#not valid without info
       request.env["omniauth.auth"] = Hashie::Mash.new(auth_data)
       get :create, provider: :github
-      assert_redirected_to root_path
+      assert_redirected_to login_failure_path
       assert_nil @controller.current_user
     end
   end
