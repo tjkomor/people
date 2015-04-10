@@ -4,9 +4,6 @@ require 'support/auth_helper'
 RSpec.describe SessionsController, :type => :controller do
   include AuthHelper
 
-  #login
-  #create
-  #logout
   describe "GET #new" do
     it "redirects if you're already authed" do
       login!
@@ -26,7 +23,7 @@ RSpec.describe SessionsController, :type => :controller do
                    credentials: {token: "my-token"},
                    info: {nickname: "worace", email: "horace.d.williams@gmail.com"}}
       request.env["omniauth.auth"] = Hashie::Mash.new(auth_data)
-      expect_any_instance_of(TuringAuth::User).to receive(:gh_teams).and_return(TuringAuth::TEAMS.values)
+      expect_any_instance_of(TuringAuth::Teams).to receive(:authorized_member_ids).and_return([auth_data[:uid]])
       get :create, provider: :github
       assert_redirected_to root_path
       assert @controller.current_user.is_a?(TuringAuth::User)
@@ -38,7 +35,7 @@ RSpec.describe SessionsController, :type => :controller do
                    info: {nickname: "worace", email: "horace.d.williams@gmail.com"}}
       request.env["omniauth.auth"] = Hashie::Mash.new(auth_data)
 
-      expect_any_instance_of(TuringAuth::User).to receive(:gh_teams).and_return([])
+      expect_any_instance_of(TuringAuth::Teams).to receive(:authorized_member_ids).and_return([])
 
       get :create, provider: :github
 
