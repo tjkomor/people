@@ -5,7 +5,7 @@ class LocationInterestsController < ApplicationController
 
   def new
     @location_interest = current_person.location_interests.new
-    @additional_locations = Location.all - current_person.locations
+    @additional_locations = Location.order_by_state_and_city - current_person.locations
   end
 
   def build_location_and_interest

@@ -5,10 +5,10 @@ RSpec.describe Location, :type => :model do
     { name: "Denver" }
   end
 
-  context "when given correct data" do    
+  context "when given correct data" do
     it "is created" do
       result = Location.create(data)
-      
+
       expect(result).to be_valid
     end
 
@@ -42,9 +42,20 @@ RSpec.describe Location, :type => :model do
       result = Location.create(data)
       expect(result.people).not_to be_nil
     end
+
+    it "returns the locations sorted by city and state" do
+      locations = ["Denver, CO", "Sydney, Australia", "San Francisco, CA", "Remote"]
+      locations.each_with_index.map do |name, index|
+        Location.create(name: name, location_interests_count: index)
+      end
+
+      result = ["Remote", "Sydney, Australia", "San Francisco, CA", "Denver, CO"]
+
+      expect(result).to eq Location.order_by_state_and_city.map(&:name)
+    end
   end
 
-  context "when given incorrect data" do 
+  context "when given incorrect data" do
     it "is invalid without a name" do
       result = Location.create
 
