@@ -12,4 +12,8 @@ class Location < ActiveRecord::Base
   def self.active
     order("split_part(name, ', ', 2)").where('locations.location_interests_count > 0')
   end
+
+  def self.order_by_state_and_city
+    order("split_part(name, ', ', 2), split_part(name, ', ', 1)")
+  end
 end
