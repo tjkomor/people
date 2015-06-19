@@ -77,5 +77,5 @@ $(document).ready ->
 
     # Show message if no results
     if selected_students.length == 0
-      container.find('.main').append('<p class="no-match">We couldn\'t find any students matching your criteria. You may want to alter your criteria or <a href="#" class="reset">reset all filters</a>.</p>')
+      container.find('.main').append('<p class="no-match">We couldn\'t find any alumni matching your criteria. You may want to alter your criteria or <a href="#" class="reset">reset all filters</a>.</p>')
       init_reset_links()
