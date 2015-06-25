@@ -5,8 +5,9 @@
 
     %ul
       - @location_interests.each do |l|
-        %li
-          = l.location.name
-          = link_to "(x)", location_interest_path(l), :method => :delete
+        - if !l.people.empty?
+          %li
+            = l.location.name
+            = link_to "(x)", location_interest_path(l), :method => :delete
 
     = link_to "Add another location interest", new_location_interest_path
