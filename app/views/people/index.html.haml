@@ -32,8 +32,9 @@
       .section
         %h4 Preferred Location
         - Location.active.each do |location|
-          %input{type: 'checkbox', id: "location_#{location.id}", 'data-location' => location.name, value: '1'}
-          %label{for: "location_#{location.id}"}= location.name
+          - if !location.people.empty?
+            %input{type: 'checkbox', id: "location_#{location.id}", 'data-location' => location.name, value: '1'}
+            %label{for: "location_#{location.id}"}= location.name
 
       -# .section
       -#   %h4 Stack
