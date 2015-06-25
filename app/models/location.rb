@@ -13,6 +13,10 @@ class Location < ActiveRecord::Base
     order("split_part(name, ', ', 2)").where('locations.location_interests_count > 0')
   end
 
+  def self.visible
+    active.select{|location| location.people.detect{|p| !p.hidden}}
+  end
+
   def self.order_by_state_and_city
     order("split_part(name, ', ', 2), split_part(name, ', ', 1)")
   end

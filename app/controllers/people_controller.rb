@@ -1,5 +1,6 @@
 class PeopleController < ApplicationController
   def index
+    @locations = Location.visible
     @people = Person.active.order(:last_name)
   end
 
