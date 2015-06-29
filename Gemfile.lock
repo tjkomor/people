@@ -1,8 +1,8 @@
 GIT
   remote: git://github.com/turingschool/turing_auth.git
-  revision: 7adb3c04ab549dcc90c6a5bc8d7dd12d972c5e81
+  revision: a7903364b5f292222694b54af807dbc6dfc0adf1
   specs:
-    turing_auth (0.0.5)
+    turing_auth (0.0.6)
       octokit (~> 3.0)
       omniauth (~> 1.0)
       omniauth-github (~> 1.0)
@@ -110,7 +110,7 @@ GEM
     fssm (0.2.10)
     haml (4.0.5)
       tilt
-    hashie (3.4.1)
+    hashie (3.4.2)
     hike (1.2.3)
     honeybadger (1.16.5)
       json
@@ -124,7 +124,7 @@ GEM
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.8.1)
-    jwt (1.5.0)
+    jwt (1.5.1)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
     method_source (0.8.2)
@@ -133,7 +133,7 @@ GEM
       subexec (~> 0.2.1)
     mini_portile (0.6.0)
     minitest (5.4.2)
-    multi_json (1.11.0)
+    multi_json (1.11.1)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
     net-scp (1.2.1)
@@ -155,7 +155,7 @@ GEM
     omniauth-github (1.1.2)
       omniauth (~> 1.0)
       omniauth-oauth2 (~> 1.1)
-    omniauth-oauth2 (1.3.0)
+    omniauth-oauth2 (1.3.1)
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
     pg (0.17.1)
@@ -163,7 +163,7 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
-    rack (1.5.3)
+    rack (1.5.5)
     rack-test (0.6.2)
       rack (>= 1.0)
     rails (4.1.7)
