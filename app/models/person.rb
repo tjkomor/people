@@ -1,5 +1,6 @@
 class Person < ActiveRecord::Base
   validates_uniqueness_of :slug
+  validates_presence_of :cohort_id
 
   has_many :projects
   has_many :location_interests
