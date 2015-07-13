@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.1.3'
 
-gem 'turing_auth', :git => "git://github.com/turingschool/turing_auth.git"
+gem 'turing_auth', git: 'git://github.com/turingschool/turing_auth.git'
 gem 'thin'
 gem 'rails', '4.1.7'
 gem 'pg'
@@ -11,7 +11,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
-gem 'sdoc', '~> 0.4.0',          group: :doc
+gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'haml'
 gem 'compass-rails'
 gem 'redcarpet'

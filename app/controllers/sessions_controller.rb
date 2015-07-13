@@ -8,22 +8,17 @@ class SessionsController < ApplicationController
   end
 
   def create
-    auth = request.env["omniauth.auth"]
-    user_info = {github_id: auth.uid, github_token: auth.credentials.token,
-                 github_name: auth.info.nickname, email: auth.info.email}
-    user = TuringAuth::User.new(user_info)
-    if Rails.env.production?
-      Rails.logger.info("Github Auth Callback received with user info #{user_info}")
-      Rails.logger.info("TuringAuth::User validity: #{user.valid?}")
-      Rails.logger.info("TuringAuth::User member?: #{user.turing_member?}")
-    end
+    display_callback_info if Rails.env.production?
+
     if user.valid? && user.turing_member?
-      Rails.logger.info("login succeeded! setting current user")
-      @current_user = user
+      Rails.logger.info('login succeeded! setting current user')
+
+      @current_user          = user
       session[:current_user] = @current_user.as_json
+
       redirect_to dashboard_path
     else
-      flash[:error] = "Sorry, only members of the Turing github organization can do that."
+      flash[:error] = 'Sorry, only members of the Turing github organization can do that.'
       redirect_to login_failure_path
     end
   end
@@ -36,5 +31,30 @@ class SessionsController < ApplicationController
   def destroy
     session[:current_user] = nil
     redirect_to root_path
+  end
+
+  private
+
+  def auth
+    request.env['omniauth.auth']
+  end
+
+  def user_info
+    {
+      github_id:    auth.uid,
+      github_token: auth.credentials.token,
+      github_name:  auth.info.nickname,
+      email:        auth.info.email
+    }
+  end
+
+  def user
+    TuringAuth::User.new(user_info)
+  end
+
+  def display_callback_info
+    Rails.logger.info("Github Auth Callback received with user info #{user_info}")
+    Rails.logger.info("TuringAuth::User validity: #{user.valid?}")
+    Rails.logger.info("TuringAuth::User member?: #{user.turing_member?}")
   end
 end
