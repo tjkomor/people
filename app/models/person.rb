@@ -45,10 +45,10 @@ class Person < ActiveRecord::Base
   end
 
   def image_url
-    if photo_slug
-      "students/#{photo_slug}"
-    else
+    if no_photo?
       "students/no_photo.jpg"
+    else
+      "students/#{photo_slug}"
     end
   end
 
@@ -58,5 +58,11 @@ class Person < ActiveRecord::Base
     else
       'available'
     end
+  end
+
+  private
+
+  def no_photo?
+    photo_slug.nil? || photo_slug.empty?
   end
 end
