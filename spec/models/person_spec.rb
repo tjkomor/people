@@ -6,16 +6,17 @@ RSpec.describe Person, type: :model do
 
     let(:data) do
       {
-        first_name:    'Jorge',
-        last_name:     'Téllez',
-        photo_slug:    'photo',
-        email_address: 'jorge@example.com',
-        looking_for:   'fun',
-        best_at:       'Spanish',
-        hidden:        'false',
-        introduction:  'Hello!',
-        github_url:    'http://example.com/github',
-        cohort:        cohort
+        first_name:     'Jorge',
+        last_name:      'Téllez',
+        email_address:  'jorge@example.com',
+        github_url:     'http://example.com/github',
+        looking_for:    'fun',
+        best_at:        'Spanish',
+        cohort_id:      cohort.id,
+        photo_slug:     'photo',
+        hidden:         'false',
+        introduction:   'Hello!',
+        user_github_id: '1'
       }
     end
 

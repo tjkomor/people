@@ -18,8 +18,9 @@ class PeopleController < ApplicationController
     @person = Person.find_or_create_by(user_github_id: current_user.github_id)
 
     if @person.update_attributes(person_params)
-      redirect_to person_path(@person)
+      redirect_to person_path(@person), notice: 'Your portfolio was created.'
     else
+      flash.now[:error] = 'Your portfolio could not be created. Please try again.'
       render :new
     end
   end
@@ -32,8 +33,9 @@ class PeopleController < ApplicationController
     @person = current_person
 
     if @person.update_attributes(person_params)
-      redirect_to person_path(@person)
+      redirect_to person_path(@person), notice: 'Your portfolio was updated.'
     else
+      flash.now[:error] = 'Your portfolio could not be updated. Please try again.'
       render :edit
     end
   end

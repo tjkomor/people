@@ -1,6 +1,8 @@
 class Person < ActiveRecord::Base
-  validates :slug,      uniqueness: true
-  validates :cohort_id, presence: true
+  validates :slug,       uniqueness: true
+  validates :cohort_id,  presence: true
+
+  validate :check_portfolio_completion
 
   has_many :projects
   has_many :location_interests
@@ -9,10 +11,14 @@ class Person < ActiveRecord::Base
 
   mount_uploader :resume, ResumeUploader
 
-  before_save :generate_slug
+  before_validation :generate_slug
 
-  def self.active
-    where(hidden: false).where(hired: false)
+  scope :active, -> { where(hidden: false).where(hired: false) }
+
+  def check_portfolio_completion
+    if not_complete?
+      errors.add(:hidden, 'You need to complete your portfolio before unhidding it. Have you completed all the (*) required fields?')
+    end
   end
 
   def full_name
@@ -43,5 +49,33 @@ class Person < ActiveRecord::Base
 
   def no_photo?
     photo_slug.nil? || photo_slug.empty?
+  end
+
+  def not_complete?
+    hidden == false && pending_attributes?
+  end
+
+  def pending_attributes?
+    attributes.any? { |attribute, value| empty_value?(value) && required_attributes.include?(attribute) }
+  end
+
+  def empty_value?(value)
+    return true if value.nil?
+    return true if value.class == String && value.empty?
+  end
+
+  def required_attributes
+    [
+      :first_name,
+      :last_name,
+      :email_address,
+      :github_url,
+      :looking_for,
+      :best_at,
+      :cohort_id,
+      :photo_slug,
+      :hidden,
+      :introduction
+    ]
   end
 end
