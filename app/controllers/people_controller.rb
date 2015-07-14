@@ -8,7 +8,21 @@ class PeopleController < ApplicationController
     @person = Person.find_by_slug(params[:id])
   end
 
-  before_action :require_login, :only => [:edit, :update, :create, :new]
+  before_action :require_login, only: [:new, :create, :edit, :update]
+
+  def new
+    @person = Person.new
+  end
+
+  def create
+    @person = Person.find_or_create_by(user_github_id: current_user.github_id)
+
+    if @person.update_attributes(person_params)
+      redirect_to person_path(@person)
+    else
+      render :new
+    end
+  end
 
   def edit
     @person = current_person
@@ -16,23 +30,30 @@ class PeopleController < ApplicationController
 
   def update
     @person = current_person
-    Person.editable_attributes.each do |attr|
-      @person.send("#{attr}=", params[:person][attr])
+
+    if @person.update_attributes(person_params)
+      redirect_to person_path(@person)
+    else
+      render :edit
     end
-    @person.save!
-    redirect_to person_path(@person)
   end
 
-  def create
-    @person = Person.find_or_create_by(:user_github_id => current_user.github_id)
-    Person.editable_attributes.each do |attr|
-      @person.send("#{attr}=", params[:person][attr])
-    end
-    @person.save!
-    redirect_to person_path(@person)
-  end
+  private
 
-  def new
-    @person = Person.new
+  def person_params
+    params.require(:person).permit(
+      :first_name,
+      :last_name,
+      :email_address,
+      :github_url,
+      :looking_for,
+      :best_at,
+      :cohort_id,
+      :photo_slug,
+      :hidden,
+      :introduction,
+      :hired,
+      :hired_by
+      )
   end
 end

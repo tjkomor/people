@@ -1,6 +1,6 @@
 class Person < ActiveRecord::Base
-  validates_uniqueness_of :slug
-  validates_presence_of :cohort_id
+  validates :slug,      uniqueness: true
+  validates :cohort_id, presence: true
 
   has_many :projects
   has_many :location_interests
@@ -20,28 +20,11 @@ class Person < ActiveRecord::Base
   end
 
   def generate_slug
-    self.slug = I18n.transliterate(full_name).downcase.gsub(" ", "_")
+    self.slug = full_name.parameterize.gsub('-', '_')
   end
 
   def to_param
     slug
-  end
-
-  def self.editable_attributes
-    [
-      :first_name,
-      :last_name,
-      :email_address,
-      :github_url,
-      :looking_for,
-      :best_at,
-      :cohort_id,
-      :photo_slug,
-      :hidden,
-      :introduction,
-      :hired,
-      :hired_by
-    ]
   end
 
   def image_url
@@ -53,11 +36,7 @@ class Person < ActiveRecord::Base
   end
 
   def status
-    if hired
-      'hired'
-    else
-      'available'
-    end
+    hired ? 'hired' : 'available'
   end
 
   private
