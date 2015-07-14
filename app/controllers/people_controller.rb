@@ -1,11 +1,15 @@
 class PeopleController < ApplicationController
   def index
     @locations = Location.visible
-    @people = Person.active.order(:last_name)
+    @people    = Person.active.order(:last_name)
   end
 
   def show
-    @person = Person.find_by_slug(params[:id])
+    @person = Person.find_by(slug: params[:id])
+
+    unless @person
+      redirect_to(people_path, error: 'We could not find the portfolio you were trying to reach.')
+    end
   end
 
   before_action :require_login, only: [:new, :create, :edit, :update]
