@@ -45,7 +45,22 @@ class Person < ActiveRecord::Base
     hired ? 'hired' : 'available'
   end
 
+  def csv_attributes
+    csv_attributes = attributes
+    csv_attributes[:cohort_name]    = cohort_name
+    csv_attributes[:location_names] = location_names
+    csv_attributes
+  end
+
   private
+
+  def cohort_name
+    return cohort.name if cohort
+  end
+
+  def location_names
+    return locations.pluck(:name).join(', ') unless locations.empty?
+  end
 
   def no_photo?
     photo_slug.nil? || photo_slug.empty?
