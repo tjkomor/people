@@ -35,6 +35,8 @@
           %ul
             - if logged_in?
               %li{class: nav_active('dashboard')}= link_to 'Dashboard', dashboard_path
+              %li{class: nav_active('resume')}=    link_to 'Resume',    resume_path
+              %li{class: nav_active('locations')}= link_to 'Locations', location_interests_path
             %li{class: nav_active('portfolios')}= link_to 'All Portfolios', '/'
             %li{class: nav_active('main')}= link_to 'Main Site', 'http://turing.io'
             %li{class: nav_active('contact')}=    link_to 'Contact', 'http://turing.io/contact'
