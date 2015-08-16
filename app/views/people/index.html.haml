@@ -16,11 +16,11 @@
       -#   %input#remote{type: 'checkbox', 'data-status' => 'hired', value: '1'}
       -#   %label{for: 'remote'} Hired
 
-      .section
-        %h4 Class
-        - Cohort.all.each do |c|
-          %input{type: 'radio', name: 'class', id: "class_#{c.name}", 'data-class' => c.name, value: c.name}
-          %label{for: "class_#{c.name}"}= c.name
+      -# .section
+      -#   %h4 Class
+      -#   - Cohort.all.each do |c|
+      -#     %input{type: 'radio', name: 'class', id: "class_#{c.name}", 'data-class' => c.name, value: c.name}
+      -#     %label{for: "class_#{c.name}"}= c.name
 
       .section
         %h4 What
