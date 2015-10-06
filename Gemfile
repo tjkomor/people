@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.2.2'
+ruby '2.2.3'
 
 gem 'turing_auth', git: 'git://github.com/turingschool/turing_auth.git'
 gem 'thin'
