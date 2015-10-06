@@ -1,4 +1,6 @@
 class PeopleController < ApplicationController
+  before_action :require_login, except: [:index]
+
   def index
     @locations = Location.visible
     @people    = Person.active.order(:last_name)
@@ -11,8 +13,6 @@ class PeopleController < ApplicationController
       redirect_to(people_path, error: 'We could not find the portfolio you were trying to reach.')
     end
   end
-
-  before_action :require_login, only: [:new, :create, :edit, :update]
 
   def new
     @person = Person.new
