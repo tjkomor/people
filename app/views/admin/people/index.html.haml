@@ -10,7 +10,6 @@
           %th Email
           %th Cohort
           %th Hidden
-          %th Hired
           %th Employer
           %th Actions
       %tbody
@@ -27,17 +26,11 @@
             - else
               no
           %td
-            - if person.hired
-              yes
-            - else
-              no
-          %td
-            - if person.hired_by
+            - if person.hired?
               = person.hired_by
             - else
-              n/a
+              not hired
           %td
-            = link_to 'show', admin_person_path(id: person.id), class: 'button'
             - if person.hidden
               = link_to 'unhide', admin_person_path(id: person.id, person: { hidden: false }), method: :patch, class: 'button'
             - else

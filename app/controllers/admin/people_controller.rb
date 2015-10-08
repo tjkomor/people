@@ -2,7 +2,7 @@ class Admin::PeopleController < ApplicationController
   before_action :require_admin
 
   def index
-    @people = Person.includes(:cohort).order("cohorts.name desc")
+    @people = Person.by_cohort
   end
 
   def show

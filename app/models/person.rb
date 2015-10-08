@@ -13,7 +13,8 @@ class Person < ActiveRecord::Base
 
   before_validation :generate_slug
 
-  scope :active, -> { where(hidden: false).where(hired: false) }
+  scope :active,    -> { where(hidden: false).where(hired: false) }
+  scope :by_cohort, -> { includes(:cohort).order("cohorts.name desc") }
 
   def check_portfolio_completion
     if not_complete?
@@ -43,6 +44,10 @@ class Person < ActiveRecord::Base
 
   def status
     hired ? 'hired' : 'available'
+  end
+
+  def hired?
+    hired && hired_by && !hired_by.empty?
   end
 
   def csv_attributes
