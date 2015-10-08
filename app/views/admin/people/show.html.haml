@@ -1,0 +1,22 @@
+.layout-wrap
+  .mod-students.mod-student
+
+    %aside
+      = image_tag @person.image_url
+
+      %ul.links
+        %li= link_to @person.email_address, "mailto:#{@person.email_address}"
+        %li= link_to 'GitHub Profile', @person.github_url
+        - if @person.resume.url
+          %li= link_to 'Resume', @person.resume.url
+
+      .section
+        %h4 Cohort
+        %ul.tags
+          %li= @person.cohort.name
+
+      .section
+        %h4 Preferred Locations
+        %ul.tags
+          - @person.locations.names.each do |name|
+            %li= name

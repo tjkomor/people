@@ -1,0 +1,42 @@
+.layout-wrap
+  .mod-admin
+    %h3 Alumni Portfolios
+    %table
+      %thead
+        %tr
+          %th ID
+          %th
+          %th Name
+          %th Email
+          %th Hidden
+          %th Hired
+          %th Employer
+          %th Actions
+      %tbody
+      - @people.each do |person|
+        %tr
+          %td= person.id
+          %td= image_tag person.image_url
+          %td= link_to person.full_name, admin_person_path(id: person.id)
+          %td= mail_to(person.email_address)
+          %td
+            - if person.hidden
+              yes
+            - else
+              no
+          %td
+            - if person.hired
+              yes
+            - else
+              no
+          %td
+            - if person.hired_by
+              person.hired_by
+            - else
+              n/a
+          %td
+            = link_to 'show', admin_person_path(id: person.id), class: 'button'
+            - if person.hidden
+              = link_to 'unhide', admin_person_path(id: person.id, person: { hidden: false }), method: :patch, class: 'button'
+            - else
+              = link_to 'hide', admin_person_path(id: person.id, person: { hidden: true }), method: :patch, class: 'button'
