@@ -1,6 +1,5 @@
 .layout-wrap
   .mod-students.mod-student
-
     %aside
       = image_tag @person.image_url
 
@@ -20,3 +19,47 @@
         %ul.tags
           - @person.locations.names.each do |name|
             %li= name
+
+    .main
+      %h2= @person.full_name
+
+      - if @person.hired?
+        %h4= "#{@person.first_name} has joined the team at #{@person.hired_by}."
+
+      = markdown(@person.introduction)
+
+      %ul.keywords
+        %li
+          %h3 Best at
+          = markdown(@person.best_at)
+        %li
+          %h3 Looking for
+          = markdown(@person.looking_for)
+        %li
+          %h3 Preferred locations
+          %ul
+            - @person.locations.names.each do |name|
+              %li= name
+
+      %ul.projects
+        - @person.projects.each do |project|
+          %li
+            %h3= project.title
+            .screenshot= image_tag(project.screenshot.portfolio.url)
+            = markdown(project.description)
+            .my_focus
+              %h4 My Areas of Focus
+              = markdown(project.my_focus)
+            .urls
+              %h4 URLs
+              %ul.urls
+                - unless project.github_url.empty?
+                  %li= link_to 'GitHub Project Page', project.github_url
+                - unless project.production_url.empty?
+                  %li= link_to 'Live Production Application', project.production_url
+                - unless project.travis_ci_badge_url.empty?
+                  %li= image_tag(project.travis_ci_badge_url)
+                - unless project.code_climate_badge_url.empty?
+                  %li= image_tag(project.code_climate_badge_url)
+            .finisher
+              &nbsp;

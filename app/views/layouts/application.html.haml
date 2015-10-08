@@ -33,7 +33,7 @@
 
         %nav
           %ul
-            - if current_user.admin?
+            - if current_user && current_user.admin?
               %li{class: nav_active('people')}= link_to 'people admin', admin_people_path
             - if logged_in?
               %li{class: nav_active('dashboard')}= link_to 'Dashboard', dashboard_path
