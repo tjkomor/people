@@ -8,12 +8,15 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @project = current_person.projects.new
-    Project.editable_attributes.each do |attr|
-      @project.send("#{attr}=", params[:project][attr])
+    @project = current_person.projects.create(project_params)
+
+    if @project.save
+      flash[:notice] = 'Your project was created.'
+      redirect_to person_path(current_person)
+    else
+      flash.now[:error] = 'Your project could not be created. Please try again.'
+      render :new
     end
-    @project.save!
-    redirect_to person_path(current_person)
   end
 
   def edit
@@ -22,15 +25,35 @@ class ProjectsController < ApplicationController
 
   def update
     @project = current_person.projects.find(params[:id])
-    Project.editable_attributes.each do |attr|
-      @project.send("#{attr}=", params[:project][attr])
+
+    if @project.update_attributes(project_params)
+      flash[:notice] = 'Your project was updated.'
+      redirect_to person_path(current_person)
+    else
+      flash.now[:error] = 'Your project could not be updated. Please try again.'
+      render :edit
     end
-    @project.save!
-    redirect_to person_path(current_person)
   end
 
   def destroy
-    current_person.projects.destroy(params[:id])
+    project = current_person.projects.destroy(params[:id])
+
+    flash[:notice] = "The project #{project.title} was deleted"
     redirect_to person_path(current_person)
+  end
+
+  private
+
+  def project_params
+    params.require(:project).permit(
+      :title,
+      :description,
+      :my_focus,
+      :github_url,
+      :production_url,
+      :travis_ci_badge_url,
+      :code_climate_badge_url,
+      :screenshot
+      )
   end
 end

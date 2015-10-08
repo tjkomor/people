@@ -20,4 +20,8 @@ class Location < ActiveRecord::Base
   def self.order_by_state_and_city
     order("split_part(name, ', ', 2), split_part(name, ', ', 1)")
   end
+
+  def self.additional_locations(person)
+    order_by_state_and_city - person.locations
+  end
 end
