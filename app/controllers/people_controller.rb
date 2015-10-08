@@ -10,7 +10,8 @@ class PeopleController < ApplicationController
     @person = Person.find_by(slug: params[:id])
 
     unless @person
-      redirect_to(people_path, error: 'We could not find the portfolio you were trying to reach.')
+      flash[:error] = 'We could not find the portfolio you were trying to reach.'
+      redirect_to people_path
     end
   end
 
@@ -22,7 +23,8 @@ class PeopleController < ApplicationController
     @person = Person.find_or_create_by(user_github_id: current_user.github_id)
 
     if @person.update_attributes(person_params)
-      redirect_to person_path(@person), notice: 'Your portfolio was created.'
+      flash[:notice] = 'Your portfolio was created.'
+      redirect_to person_path(@person)
     else
       flash.now[:error] = 'Your portfolio could not be created. Please try again.'
       render :new
@@ -37,7 +39,8 @@ class PeopleController < ApplicationController
     @person = current_person
 
     if @person.update_attributes(person_params)
-      redirect_to person_path(@person), notice: 'Your portfolio was updated.'
+      flash[:notice] = 'Your portfolio was updated.'
+      redirect_to person_path(@person)
     else
       flash.now[:error] = 'Your portfolio could not be updated. Please try again.'
       render :edit

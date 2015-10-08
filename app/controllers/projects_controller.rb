@@ -11,10 +11,10 @@ class ProjectsController < ApplicationController
     @project = current_person.projects.create(project_params)
 
     if @project.save
-      flash[:notice] = "Your project was created."
+      flash[:notice] = 'Your project was created.'
       redirect_to person_path(current_person)
     else
-      flash.now[:error] = "Your project could not be created. Please try again."
+      flash.now[:error] = 'Your project could not be created. Please try again.'
       render :new
     end
   end
@@ -27,10 +27,10 @@ class ProjectsController < ApplicationController
     @project = current_person.projects.find(params[:id])
 
     if @project.update_attributes(project_params)
-      flash[:notice] = "Your project was updated."
+      flash[:notice] = 'Your project was updated.'
       redirect_to person_path(current_person)
     else
-      flash.now[:error] = "Your project could not be updated. Please try again."
+      flash.now[:error] = 'Your project could not be updated. Please try again.'
       render :edit
     end
   end

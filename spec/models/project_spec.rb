@@ -32,27 +32,11 @@ RSpec.describe Project, type: :model do
     it 'belongs to a person' do
       person = Person.new
       person.save(validate: false)
-      
+
       result = Project.create(data.merge(person_id: person.id))
 
       expect(result.person).not_to be_nil
       expect(result.person).to eq person
-    end
-
-    it 'has editable attributes' do
-      result     = Project.editable_attributes
-      attributes = %i(
-        title
-        description
-        my_focus
-        github_url
-        production_url
-        travis_ci_badge_url
-        code_climate_badge_url
-        screenshot
-      )
-
-      expect(result).to eq attributes
     end
   end
 end

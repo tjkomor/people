@@ -13,14 +13,18 @@ form.formtastic
     display: block
 
   input[type="text"], input[type="email"], input[type="url"]
-    width: 30em
+    width: 400px
+    height: 30px
+    font-size: 20px
+    font-weight: light
+    color: #666
 
   li.boolean
     input, label
       display: inline
 
   textarea
-    width: 30em
+    width: 400px
 
   textarea.brief
     height: 5em
@@ -32,5 +36,20 @@ form.formtastic
 
   p.inline-hints
     font-weight: light
-    color: #3333AA
+    color: #666
     width: 26em
+
+  input[type="submit"]
+    padding: 10px 30px
+    background: transparent
+    border: 2px solid #05c2d1
+    color: #05c2d1
+    font-size: 15px
+    cursor: pointer
+    -webkit-border-radius: 5px
+    border-radius: 5px
+    text-transform: uppercase
+
+  input[type="submit"]:hover
+    background: #05c2d1
+    color: white
