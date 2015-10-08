@@ -22,9 +22,9 @@
           %td= person.cohort.name
           %td
             - if person.hidden
-              yes
+              hidden
             - else
-              no
+              visible
           %td
             - if person.hired?
               = person.hired_by
