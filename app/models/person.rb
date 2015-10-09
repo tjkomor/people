@@ -1,6 +1,6 @@
 class Person < ActiveRecord::Base
-  validates :slug,       uniqueness: true
-  validates :cohort_id,  presence: true
+  validates :slug,      uniqueness: true
+  validates :cohort_id, presence: true
 
   validate :check_portfolio_completion
 
@@ -14,7 +14,7 @@ class Person < ActiveRecord::Base
   before_validation :generate_slug
 
   scope :active,    -> { where(hidden: false).where(hired: false) }
-  scope :by_cohort, -> { includes(:cohort).order("cohorts.name desc, last_name asc") }
+  scope :by_cohort, -> { includes(:cohort).order('cohorts.name desc, last_name asc') }
 
   def check_portfolio_completion
     if not_complete?

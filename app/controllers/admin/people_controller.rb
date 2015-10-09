@@ -20,7 +20,7 @@ class Admin::PeopleController < ApplicationController
       flash[:notice] = "The person was updated."
       redirect_to admin_people_path
     else
-      flash[:error] = "The person could not be updated."
+      flash.now[:error] = "The person could not be updated."
       render :edit
     end
   end
