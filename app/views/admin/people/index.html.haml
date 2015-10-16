@@ -31,6 +31,7 @@
             - else
               not hired
           %td
+            = link_to 'edit', edit_admin_person_path(id: person.id), class: 'button'
             - if person.hidden
               = link_to 'unhide', admin_person_path(id: person.id, person: { hidden: false }), method: :patch, class: 'button'
             - else

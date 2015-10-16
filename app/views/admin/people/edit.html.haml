@@ -1,0 +1,21 @@
+.layout-wrap
+  .mod-text
+    %h3 #{@person.full_name}'s Portfolio
+    = semantic_form_for @person, url: admin_person_path(@person.id), method: :patch do |f|
+      = f.inputs name: 'Basics' do
+        = f.input :first_name,    required: true
+        = f.input :last_name,     required: true
+        = f.input :email_address, required: true
+        = f.input :github_url,    required: true,  hint: 'Full URL including http://github.com/'
+        = f.input :cohort,        required: true,  as: :select, collection: Cohort.all
+        = f.input :photo_slug,    required: true,  as: :select, collection: Photo.all
+      = f.inputs name: 'Availability' do
+        = f.input :hired,         required: false, label: 'I have a Job!'
+        = f.input :hired_by,      required: false, as: :string, hint: 'Company and location like \'Bonobos in NYC\''
+      = f.inputs name: 'Job Type' do
+        = f.input :introduction,  required: true,  hint: 'One to two paragraphs about you. Similar to the opening on your resume. Uses Markdown.'
+        = f.input :looking_for,   required: true,  input_html: { class: :brief }, hint: '3-5 bullets about what will make a company stand out to you. Use Markdown unordered lists like \'* TDD\'.'
+        = f.input :best_at,       required: true,  input_html: { class: :brief }, hint: '3-5 bullets about what skills are your strongest. Use Markdown unordered lists like \'* Full-Time Pairing\'.'
+      = f.inputs name: 'System' do
+        = f.input :hidden, hint: 'If checked, the portfolio will not be public.'
+      = f.submit 'Save', class: 'button'

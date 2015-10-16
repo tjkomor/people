@@ -3,7 +3,7 @@ class PeopleController < ApplicationController
 
   def index
     @locations = Location.visible
-    @people    = Person.active.order(:last_name)
+    @people    = Person.visible.order(:last_name)
   end
 
   def show

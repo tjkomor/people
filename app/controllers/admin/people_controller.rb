@@ -17,10 +17,10 @@ class Admin::PeopleController < ApplicationController
     @person = Person.find(params[:id])
 
     if @person.update_attributes(person_params)
-      flash[:notice] = "The person was updated."
+      flash[:notice] = "#{@person.full_name}'s profile was updated."
       redirect_to admin_people_path
     else
-      flash.now[:error] = "The person could not be updated."
+      flash.now[:error] = "#{@person.full_name}'s profile could not be updated."
       render :edit
     end
   end

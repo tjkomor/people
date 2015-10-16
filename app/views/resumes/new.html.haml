@@ -2,6 +2,6 @@
   .mod-text
     %h3 Upload Your Resume
     = form_for :resume, :url => resume_path, :method => :post, :html => {:multipart => true} do |f|
-      <label>Resume PDF</label>
+      %p Upload your resume in PDF format.
       = f.file_field :file
-      = f.submit 'Save'
+      = f.submit 'Upload', class: 'button'

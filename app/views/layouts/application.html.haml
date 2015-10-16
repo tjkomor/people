@@ -16,37 +16,18 @@
     %meta{property: 'og:type',        content: 'website'}
     %meta{property: 'og:url',         content: 'http://turing.io'}
 
+    = javascript_include_tag 'application'
     = javascript_include_tag 'modernizr'
-    = stylesheet_link_tag 'application'
     = javascript_include_tag '//use.typekit.net/xxm2mvw.js'
     = javascript_include_tag 'analytics'
+    = stylesheet_link_tag 'application'
     = #partial '/layouts/facebook_tracking'
     :javascript
       try{Typekit.load();}catch(e){}
 
   %body{class: 'page_classes'}
     = csrf_meta_tag
-
-    %header.mod-header
-      .layout-wrap
-        %h1= link_to 'Turing School of Software & Design', '/'
-
-        %nav
-          %ul
-            - if current_user && current_user.admin?
-              %li{class: nav_active('people')}= link_to 'people admin', admin_people_path
-            - if logged_in?
-              %li{class: nav_active('dashboard')}= link_to 'Dashboard', dashboard_path
-              %li{class: nav_active('resume')}=    link_to 'Resume',    new_resume_path
-            %li{class: nav_active('portfolios')}= link_to 'All Portfolios', '/'
-            %li{class: nav_active('main')}= link_to 'Main Site', 'http://turing.io'
-            %li{class: nav_active('contact')}=    link_to 'Contact', 'http://turing.io/contact'
-            - if logged_in?
-              %li= link_to 'Logout', logout_path
-
+    = render 'layouts/header'
+    = render 'layouts/alert'
     = yield
-
-    = javascript_include_tag 'application'
-
-    %footer.mod-footer
-      %p &copy; Copyright 2015 Turing School of Software &amp; Design, All rights reserved
+    = render 'layouts/footer'
