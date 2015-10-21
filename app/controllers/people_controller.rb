@@ -1,5 +1,5 @@
 class PeopleController < ApplicationController
-  before_action :require_login, except: [:index]
+  before_action :require_login, except: [:index, :show]
 
   def index
     @locations = Location.visible
