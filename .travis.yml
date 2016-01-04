@@ -1,8 +1,17 @@
-language: ruby
+language:
+  - ruby
 rvm:
   - 2.2.3
+services:
+  - postgresql
 env:
   global:
     - secure: "WknsL0XFJQZ9cHLAO2cyD4gV3WbOmVrn3/FKy33u7J3Ofiwt9Kcu7ZXhvasu3+MRi7rlRbLdncu3WPS1I3bVYwFHd5F/lYhT5CYwX6TCvo7ov00CAJHnWlJOfU4IeniydhnDPFtFtx5PWCG5c7VzIkKlDb5lqzjYyDXOoeJV88s="
     - secure: "eFUrw4/TepqIF08Oobx/gxUi6/w8092EXXKESjQcY3eG8zp5vwRgHJZ4kxjlLNA+sUyTIS7SO7UEP2tF+7l7HV1Rdc2BuVjdnO5MvGMALEolEwslvhQkcEgYMmrXJ4tVhhcpOKei1nPuazIx15PJlgn7yg5gXJS7XKERo6xpgnQ="
     - secure: "ecA9d23+fk96HTcVkkQOA/O/Zz/U0BUY3fhtmILssUlThYWB1KMAznV6MQ1zZTmHTN65OFtPM19wBsK/ntRoB9ePlbnAApHTOcep6G88dw7C9M7aqjZ+j1jLnb/HOHa0IJdKF/9dKfZBN/r05juQO3Df+OH7HUybPXntyawo9cU="
+before_script:
+  - psql -c 'create database travis_ci_test;' -U postgres
+test:
+  adapter: postgresql
+  database: travis_ci_test
+  username: postgres
